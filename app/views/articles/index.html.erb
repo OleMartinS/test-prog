@@ -1,0 +1,17 @@
+<h1>Liste av alle blogginnleggene</h1>
+<%= link_to 'Ny artikkel', new_article_path %>
+<p>
+<table>
+  <tr>
+    <th>Tittel</th>
+    <th>Tekst</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Vis', article_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
