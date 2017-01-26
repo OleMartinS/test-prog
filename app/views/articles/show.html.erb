@@ -1,3 +1,4 @@
+<h1>Innlegg # <%= @article.id %></h1>
 <p>
 	<strong>Tittel:</strong>
 	<%= @article.title %>
@@ -6,5 +7,36 @@
 	<strong>Tekst:</strong>
 	<%= @article.text %>
 </p>
-<%= link_to 'Endre innlegget', edit_article_path %><br>
+<% if @article.comments.count > 0 %>
+	<h2>Kommentarer</h2>
+	<% @article.comments.each do |comment| %>
+		<p>
+			<strong>Navn:</strong>
+			<%= comment.commenter %>
+		</p>
+		<p>
+			<strong>Kommentar:</strong>
+			<%= comment.body %>
+		</p>
+	<% end %>
+<% else %>
+	<h2>Ingen kommentarer</h2>
+<% end %>
+
+<h2>Legg til en kommentar</h2>
+<%= form_for ([@article, @article.comments.build]) do |f| %>
+	<p>
+		<%= f.label :avsender %><br>
+		<%= f.text_field :commenter %>
+	</p>
+	<p>
+		<%= f.label :tekst %><br>
+		<%= f.text_area :body %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Endre innlegget', edit_article_path(@article) %><br>
 <%= link_to 'Til oversikten', articles_path %>
