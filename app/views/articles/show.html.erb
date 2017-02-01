@@ -1,0 +1,10 @@
+<p>
+	<strong>Tittel:</strong>
+	<%= @article.title %>
+</p>
+<p>
+	<strong>Tekst:</strong>
+	<%= @article.text %>
+</p>
+<%= link_to 'Endre innlegget', edit_article_path %><br>
+<%= link_to 'Til oversikten', articles_path %>
