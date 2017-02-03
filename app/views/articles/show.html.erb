@@ -8,10 +8,18 @@
 	<%= @article.text %>
 </p>
 
-<h2>Comments:</h2>
-<%= render @article.comments %>
+<% i = - @article.comments.count + 1 %>
+<%= i %>
+<% if @article.comments.count > 0 %>
+	<h2> - Comments:</h2>
+	<table>
+			<%= render @article.comments, :i => i %>
+	</table>
+<% else %>
+	<h2> - There is no comments</h2>
+<% end %>
 
-<h2>Add a comment:</h2>
+<h2> - Add a comment:</h2>
 <%= form_for ([@article, @article.comments.build]) do |f| %>
 	<p>
 		<%= f.label :commenter %><br>

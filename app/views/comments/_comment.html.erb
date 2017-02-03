@@ -1,12 +1,12 @@
-<table>
-	<tr>
-		<th rowspan="2"> # <%= comment.id %></th>
-		<th>Commenter:</th>
-		<td><%= comment.commenter %></td>
-		<td rowspan="2"> <%= link_to 'Remove', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	</tr>
-	<tr>
-		<th>Comment:</th>
-		<td><%= comment.body %></td>
-	</tr>
-</table>
+<tr>
+	<th rowspan="2"> # <%= @article.comments.count + i %></th>
+	<th>Commenter:</th>
+	<td><%= comment.commenter %></td>
+	<td rowspan="2" style="align:middle"> <%= link_to 'Remove', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<td><%= i %></td>
+</tr>
+<tr>
+	<th>Comment:</th>
+	<td><%= comment.body %></td>
+</tr>
+
