@@ -8,8 +8,7 @@
 	<%= @article.text %>
 </p>
 
-<% i = - @article.comments.count + 1 %>
-<%= i %>
+<!-- <% i = - @article.comments.count + 1 %> -->
 <% if @article.comments.count > 0 %>
 	<h2> - Comments:</h2>
 	<table>
@@ -20,6 +19,25 @@
 <% end %>
 
 <h2> - Add a comment:</h2>
+
+
+
+	<% if @article.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+				<%= pluralize(@article.errors.count, "reason") %> that the comment couldn't be saved:
+			</h2>
+			<ul>
+				<% @article.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+
+
+
 <%= form_for ([@article, @article.comments.build]) do |f| %>
 	<p>
 		<%= f.label :commenter %><br>
