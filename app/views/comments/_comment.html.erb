@@ -1,0 +1,14 @@
+<tr>
+<!--	<th rowspan="2"> # <%= @article.comments.count + i %></th> -->
+	<th>Commenter:</th>
+	<td><%= comment.commenter %></td>
+	<td rowspan="2" style="align:middle"> <%= link_to 'Remove Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<!--	<td><%= i %></td> -->
+</tr>
+<tr>
+	<th>Comment:</th>
+	<td><%= comment.body %></td>
+</tr>
+<tr>
+	<td></td>
+</tr>
